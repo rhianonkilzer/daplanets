@@ -14,5 +14,13 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/:id', (req, res, next) => {
-
+    Moons.findById(req.params.id)
+        .then(moon => res.send(moon))
+        .catch(next)
 })
+
+
+
+
+
+module.exports = router
