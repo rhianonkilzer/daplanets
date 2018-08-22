@@ -21,54 +21,13 @@ With all of the complexities involved in building out all of these relationships
 
 For our purposes we will use a framework called <a href=”http://www.js-data.io/” target=”_blank”>js-data.</a> One of the best benefits to an ORM is they provide us with a programmable interface (**not a GUI**) that allows us to write all of our code the same regardless of the type of database that we are storing our information to. This flexibility helps tremendously when developers need to switch between test data and production data.  This quick switching of entire datastores is a small glimpse at one of the <a href=”https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#dependency-inversion-principle” target=”_blank”>S.O.L.I.D principles of Object Oriented programming</a>
 
-###Let’s start mapping
+### Let’s start mapping
 
 This project has provided the basic starting points of an application to manage Galaxies, I know a big task right. Thinking about the relationships of space you will need to create a model for each of the files in the models directory. Every Model will need its own route handler as well. The type of data that you store on each model is up to you. You will want to use the Schemator to ensure data integrity.
 
-You have a mostly working example in the Galaxy Model and Galaxy Routes. Both of these files will need expanded on so you can of course edit the information that you store about each item in your universe but, take your time to work on the relationships and the ability to create and read data first. Also take you time to really map out each of the items and try to identify the relationships they have between each other. The js-data syntax is a bit odd when it comes to identifying your relationships but here is a quick map to help you visualize.
+You have a mostly working example in the Galaxy Model and Galaxy Routes. Both of these files will need expanded on so you can of course edit the information that you store about each item in your universe but, take your time to work on the relationships and the ability to create and read data first. Also take you time to really map out each of the items and try to identify the relationships they have between each other.
 
-```javascript
-relations: {
-    // hasMany uses "localField" and "localKeys" or "foreignKey"
-    hasMany: {
-      comment: {
-        // localField is for linking relations
-        // user.comments -> array of comments of the user
-        localField: 'comments',
-        // foreignKey is the "join" field
-        // the name of the field on a comment that points to its parent user
-        foreignKey: 'userId'
-      }
-    },
-    // hasOne uses "localField" and "localKey" or "foreignKey"
-    hasOne: {
-      profile: {
-        // localField is for linking relations
-        // user.profile -> profile of the user
-        localField: 'profile',
-        // foreignKey is the "join" field
-        // the name of the field on a profile that points to its parent user
-        foreignKey: 'userId'
-      }
-    },
-    // belongsTo uses "localField" and "localKey"
-    belongsTo: {
-      organization: {
-        // localField is for linking relations
-        // user.organization -> organization of the user
-        localField: 'organization',
-        // localKey is the "join" field
-        // the name of the field on a user that points to its parent organization
-        localKey: 'organizationId',
-        // if you add this to a belongsTo relation
-        // then js-data will attempt to use
-        // a nested url structure, e.g. /organization/15/user/4
-        parent: true
-      }
-}
-```
-
-###First Steps
+### First Steps
 
 - Identify the relationships between each of your models
 
