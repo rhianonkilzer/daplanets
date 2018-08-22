@@ -19,6 +19,9 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+
+
+
 //create one
 router.post('/', (req, res, next) => {
   Galaxies.create(req.body)

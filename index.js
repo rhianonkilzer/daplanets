@@ -11,11 +11,12 @@ server.use(bp.urlencoded({
 
 let galaxyRoutes = require('./routes/galaxies')
 let planetRoutes = require('./routes/planets')
+let moonRoutes = require('./routes/moons')
+let starRoutes = require('./routes/stars')
 
-
+// GALAXIES
 
 server.use('/api/galaxies', galaxyRoutes)
-
 
 server.use('/api/*', (error, req, res, next) => {
   res.send(error)
@@ -28,7 +29,7 @@ server.use('*', (req, res, next) => {
 
 
 
-
+// PLANETS
 
 server.use('/api/planets', planetRoutes)
 
@@ -42,6 +43,34 @@ server.unsubscribe('*', (req, res, next) => {
 
 
 
+
+// MOONS
+
+server.use('/api/moons', moonRoutes)
+
+server.use('/api/*', (error, req, res, next) => {
+  res.send(error)
+})
+
+server.unsubscribe('*', (req, res, next) => {
+  res.status(404).send('<h1>NO PAGE FOUND</h1>')
+})
+
+
+
+
+
+// STARS
+
+server.use('/api/stars', starRoutes)
+
+server.use('/api/*', (error, req, res, next) => {
+  res.send(error)
+})
+
+server.unsubscribe('*', (req, res, next) => {
+  res.status(404).send('<h1>NO PAGE FOUND</h1>')
+})
 
 
 
