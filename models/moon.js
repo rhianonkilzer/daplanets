@@ -17,4 +17,5 @@ let schema = new Schema({
         ref: 'Galaxy',
         required: true
       }
+      
 })

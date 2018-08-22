@@ -26,6 +26,7 @@ router.post('/', (req, res, next) => {
     .catch(next)
 })
 
+
 //edit one
 router.put('/:id', (req, res, next) => {
   Galaxies.findByIdAndUpdate(req.params.id, req.body)

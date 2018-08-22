@@ -10,7 +10,7 @@ server.use(bp.urlencoded({
 
 
 let galaxyRoutes = require('./routes/galaxies')
-
+let planetRoutes = require('./routes/planets')
 
 
 
@@ -28,6 +28,17 @@ server.use('*', (req, res, next) => {
 
 
 
+
+
+server.use('/api/planets', planetRoutes)
+
+server.use('/api/*', (error, req, res, next) => {
+  res.send(error)
+})
+
+server.unsubscribe('*', (req, res, next) => {
+  res.status(404).send('<h1>NO PAGE FOUND</h1>')
+})
 
 
 
